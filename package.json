@@ -1,0 +1,26 @@
+{
+  "name": "reskodeblog",
+  "version": "1.0.0",
+  "description": "reskodeBlog",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev-start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akrabalcool/reskodeBlog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akrabalcool/reskodeBlog/issues"
+  },
+  "homepage": "https://github.com/akrabalcool/reskodeBlog#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "prisma": "^3.5.0"
+  },
+  "type": "module"
+}
