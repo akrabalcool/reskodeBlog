@@ -6,6 +6,53 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+
+model Utilisateur {
+  idUtilisateur String @default(cuid()) @id
+  loginUtilisateur String @db.VarChar(100)
+  passwordUtilisateur String @db.Text
+
+  articles Article[]
+}
+
+model Article {
+  idArticle String @default(cuid()) @id
+  imageArticle String @db.Text
+  descriptionArticle String @db.Text
+  liensArticle String?
+
+  // Utilisateur
+  utilisateur Utilisateur @relation(fields: [idUtilisateur], references: [idUtilisateur])
+  idUtilisateur String
+
+  // Commentaire
+  commentaires Commentaire[]
+
+  // TypeArtycle
+  typeArticle TypeArticle @relation(fields: [idTypeArticle], references: [idTypeArticle])
+  idTypeArticle String
+
+}
+
+model Commentaire {
+  idCommentaire String @default(cuid()) @id
+  nomOuEmail String?
+
+  aritcle Article @relation(fields: [idArticle], references: [idArticle])
+  idArticle String
+}
+
+model TypeArticle {
+  idTypeArticle String @default(cuid()) @id
+  libelleTypeAticle String?
+
+  articles Article[]
+}
+
+model Publicite {
+  idPublicite String @default(cuid()) @id
 }
