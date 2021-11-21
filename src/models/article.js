@@ -10,7 +10,7 @@ export default {
         let {imageArticle} = request.files
         let {titre ,descriptionArticle,liensArticle,typeArticle} = request.body
         if(imageArticle&&titreArticle&&descriptionArticle&&liensArticle&&typeArticle){
-            let article = prisma.article.create({
+            let article = await prisma.article.create({
                 data :{
                     imageArticle: Buffer.from(imageArticle.data).toString('base64') ,
                     titre: titre,
@@ -29,7 +29,7 @@ export default {
     chercherParType:(request,response) =>{
         let {typeArticle} = request.params
         if(typeArticle){
-            let article = prisma.article.findMany({
+            let article = await prisma.article.findMany({
                 where:{
                     idTypeArticle: typeArticle
                 }
@@ -43,7 +43,7 @@ export default {
     chercherParid:(request,response)=>{
         let {idArticle} = request.params
         if(idArticle){
-            let article = prisma.article.findUnique({
+            let article = await prisma.article.findUnique({
                 where:{
                     idArticle:idArticle
                 }
@@ -54,7 +54,7 @@ export default {
     supprimer:(request,response)=>{
         let {idArticle} = request.params
         if(idArticle){
-            let article = prisma.article.delete({
+            let article = await prisma.article.delete({
                 where:{
                     idArticle:idArticle
                 }
@@ -66,7 +66,7 @@ export default {
         let {idArticle} = request.params
         let {nomOuEmail,contenu} = request.body
         if(idArticle){
-            let article = prisma.article.update({
+            let article = await prisma.article.update({
                 where:{
                     idArticle: idArticle
                 },
