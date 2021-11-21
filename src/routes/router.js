@@ -7,6 +7,8 @@ export default (() => {
     blog.route('/').get((request,response)=>{
         response.send("cool")
     }) // L'ajout du middleware homeOff permet de desactiver le fonctionnment de la page
-        
+    blog.route('/juridique')
+    blog.route('/economique')
+    blog.route('/scientifique')
     return blog
 })()
