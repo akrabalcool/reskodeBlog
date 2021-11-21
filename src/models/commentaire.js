@@ -4,11 +4,11 @@ const prisma = new PrismaClient()
 
 
 export default {
-    supprimer:(request,response)=>{
+    supprimer: async (request,response)=>{
         let {idCommentaire}=request.params
         if(idCommentaire)
         {
-            let comentaire  = prisma.commentaire.delete({
+            let comentaire  = await prisma.commentaire.delete({
                 where:{
                     idCommentaire:idCommentaire
                 }
@@ -16,5 +16,21 @@ export default {
             return response
         }
         return response
+    },
+
+    ajouterCommentaire: async (request,response)=>{
+        let {idArticle} = request.params
+        let {nomOuEmail,contenu} = request.body
+        if(idArticle){
+            let commentaire = await prisma.commentaire.create({
+                data: {
+                    contenu: contenu,
+                    idArticle: idArticle,
+                    nomOuEmail: nomOuEmail
+                }
+            })  
+            return  response.render()
+        }
+        return response.redirect()
     }
 }
