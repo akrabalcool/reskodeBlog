@@ -1,6 +1,6 @@
 // Imported modules from node_modules
 import express from "express";
-
+import fileUpload from "express-fileupload";
 
 
 // Imported modules from files
@@ -11,6 +11,7 @@ import router from './src/routes/router.js'
 let app = express()
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+app.use(fileUpload())
 
 
 // midllewares
