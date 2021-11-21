@@ -17,16 +17,12 @@ export default {
             response.locals.user = request.session.user
         }
         request.userLogin = (data, redirect) => {
-    
             if(request.session.user === 'undefined') {
                 request.session.user = {}
-            }
-    
+            }  
             request.session.user = data
-
             response.redirect(redirect)
         }
-    
         next()
     },
 
