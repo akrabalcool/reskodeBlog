@@ -21,6 +21,7 @@ model Utilisateur {
 
 model Article {
   idArticle String @default(cuid()) @id
+  titre String?
   imageArticle String @db.Text
   descriptionArticle String @db.Text
   liensArticle String?
@@ -41,8 +42,8 @@ model Article {
 model Commentaire {
   idCommentaire String @default(cuid()) @id
   nomOuEmail String?
-
-  aritcle Article @relation(fields: [idArticle], references: [idArticle])
+  contenu String @db.Text
+  article Article @relation(fields: [idArticle], references: [idArticle])
   idArticle String
 }
 
