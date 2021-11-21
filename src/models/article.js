@@ -1,32 +1,30 @@
 import pkg from '@prisma/client'
-import { request, response } from 'express'
 const {PrismaClient} = pkg
 const prisma = new PrismaClient()
 
-
 export default {
 
-    ajouter:(request,response) =>{
-        let {imageArticle} = request.files
-        let {titre ,descriptionArticle,liensArticle,typeArticle} = request.body
-        if(imageArticle&&titreArticle&&descriptionArticle&&liensArticle&&typeArticle){
+    ajouter: async (request,response) => {
+        let {imageArticle} = request.files ? request.files : ""
+        let {titreArticle, descriptionArticle, liensArticle, typeArticle} = request.body
+        let data = [imageArticle, titreArticle, descriptionArticle, liensArticle, typeArticle]
+        if(data.every(element => {return element != ""})){
             let article = await prisma.article.create({
-                data :{
+                data: {
                     imageArticle: Buffer.from(imageArticle.data).toString('base64') ,
-                    titre: titre,
+                    titreArticle: titreArticle,
                     descriptionArticle: descriptionArticle ,
-                    liensArticle: liensArticle ,
-                    idTypeArticle: typeArticle
+                    liensArticle: liensArticle,
+                    idTypeArticle: typeArticle,
+                    idUtilisateur: request.session.user.idUtilisateur
                 }
             })
-            return response.render()
-        }else{
-            return response.redirect()
-        }
-           
+        } else {
+            request.errors('Veuillez reseigner tous les chmaps', '/info')
+        } 
     },
 
-    chercherParType:(request,response) =>{
+    chercherParType: (request,response) =>{
         let {typeArticle} = request.params
         if(typeArticle){
             let article = await prisma.article.findMany({
@@ -40,7 +38,7 @@ export default {
         }
     },
 
-    chercherParid:(request,response)=>{
+    chercherParid: (request,response)=>{
         let {idArticle} = request.params
         if(idArticle){
             let article = await prisma.article.findUnique({
@@ -51,7 +49,7 @@ export default {
         }
     },
 
-    supprimer:(request,response)=>{
+    supprimer: (request,response)=>{
         let {idArticle} = request.params
         if(idArticle){
             let article = await prisma.article.delete({
