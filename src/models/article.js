@@ -24,21 +24,24 @@ export default {
         } 
     },
 
-    chercherParType: (request,response) =>{
+    chercherParType: async (request,response) =>{
         let {typeArticle} = request.params
         if(typeArticle){
+            
             let article = await prisma.article.findMany({
                 where:{
-                    idTypeArticle: typeArticle
+                    typeArticle:{
+                        libelleTypeAticle: typeArticle
+                    }
                 }
             })
-            return response.render()
+            return response.json(article)
         }else{
-            return response.redirect()
+            return response.errors('type d\' article non trouver','/info')
         }
     },
 
-    chercherParid: (request,response)=>{
+    chercherParid: async (request,response)=>{
         let {idArticle} = request.params
         if(idArticle){
             let article = await prisma.article.findUnique({
@@ -49,7 +52,7 @@ export default {
         }
     },
 
-    supprimer: (request,response)=>{
+    supprimer: async (request,response)=>{
         let {idArticle} = request.params
         if(idArticle){
             let article = await prisma.article.delete({
@@ -60,28 +63,22 @@ export default {
         }
     },
 
-    ajouterCommentaire: (request,response)=>{
+    modifier: async (request,response)=>{
         let {idArticle} = request.params
-        let {nomOuEmail,contenu} = request.body
-        if(idArticle){
+        let {descriptionArticle} = request.body
+        if(idArticle !="" && descriptionArticle !=""){
             let article = await prisma.article.update({
                 where:{
-                    idArticle: idArticle
+                    idArticle:idArticle
                 },
                 data:{
-                    commentaires:{
-                        create:{
-                            nomOuEmail: nomOuEmail,
-                            contenu: contenu
-                        }
-                    }
+                    descriptionArticle: descriptionArticle
                 }
-            })       
-            return  response.render()
+            })
         }
-
-        return response.redirect()
     }
+
+    
 
 
 

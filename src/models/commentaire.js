@@ -24,12 +24,12 @@ export default {
         if(idArticle){
             let commentaire = await prisma.commentaire.create({
                 data: {
-                    contenu: contenu,
+                    contenuCommentaire: contenu,
                     idArticle: idArticle,
                     nomOuEmail: nomOuEmail
                 }
             })  
-            return  response.render()
+            return  response.json(commentaire)
         }
         return response.redirect()
     }

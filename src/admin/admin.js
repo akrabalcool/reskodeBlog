@@ -1,19 +1,19 @@
-import article from "../models/article.js"
+import Article from "../models/article.js"
+import commentaire from "../models/commentaire.js"
+
 
 export default {
     index: (request, response) => {
         response.send('Index')
     },
 
-    ajouterArticle: article.ajouter,
+    ajouterArticle:Article.ajouter,
 
-    modifierArticle: (request, response) => {
+    modifierArticle:Article.modifier,
 
-    },
+    retirerArticle:Article.supprimer,
 
-    retirerArticle: (request, response) => {
-
-    },
+    supprimerCommentaire: commentaire.supprimer,
 
     ajouterPublicite: (request, response) => {
 

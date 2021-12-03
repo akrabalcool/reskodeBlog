@@ -4,7 +4,6 @@ import fileUpload from "express-fileupload";
 import session from "express-session";
 import handler from './src/middlewares/handler.js'
 import authent from "./src/middlewares/authent.js";
-
 // Imported modules from files
 import router from './src/routes/router.js'
 
@@ -54,3 +53,4 @@ app.use(handler.notFoundHandler)
 
 // app port
 app.listen(3000 || process.env.PORT)
+
