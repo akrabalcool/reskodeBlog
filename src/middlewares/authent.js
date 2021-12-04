@@ -4,7 +4,7 @@ let prisma = new PrismaClient()
 
 export default {
 
-    loginVerification: (request, response, next) => {
+    loginVerification: (request, response, next) => { 
         if(!request.session.user) {
             request.errors('Login to continue', '/info')
         } else {

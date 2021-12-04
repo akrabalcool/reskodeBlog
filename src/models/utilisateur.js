@@ -4,6 +4,9 @@ let { PrismaClient } = pkg
 let prisma = new PrismaClient()
 
 export default {
+    connexionGet: async (request,response)=>{
+        response.render('Admin/auth/connexion')
+    },
     connexion: async (request, response) => {
         let {loginUtilisateur, passwordUtilisateur} = request.body
         let data = [loginUtilisateur, passwordUtilisateur]

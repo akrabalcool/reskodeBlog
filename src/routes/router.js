@@ -15,24 +15,22 @@ export default (() => {
 
     // Routes / (root principal)
     blog.route('/').get((request,response)=>{
-        console.log('///////////////////////////////////////////////////////')
-        console.log(request.session)
-        console.log(response.locals)
-        response.send({
-            session: request.session,
-            locals: response.locals,
-            url: request.originalUrl
-        })
+        
+       response.render('visiteurs/index.ejs')
     }) // L'ajout du middleware homeOff permet de desactiver le fonctionnment de la page
     //:typeArticle peuvent prenf=dre trois forme economique , juridique et scientifique
     blog.route('/article/:typeArticle').get(article.chercherParType)
     
     blog.route('/article/ajoutCommentaire/:idArticle').get(commentaire.ajouterCommentaire)
 
+    blog.route('/login').get(utilisateur.connexionGet)
+
     blog.route('/login').post(utilisateur.connexion)
 
-    blog.route('/admin').get(authent.loginVerification, admin.index)
-
+    blog.route('/admin').get(authent.loginVerification,admin.index)
+    
+    blog.route('/admin/article/create').get(authent.loginVerification,admin.getAjouterArticle)
+    
     blog.route('/admin/article/create').post(authent.loginVerification, admin.ajouterArticle)
     
     blog.route('/admin/article/delete/:idArticle').post(authent.loginVerification, admin.retirerArticle)

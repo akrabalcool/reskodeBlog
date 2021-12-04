@@ -27,27 +27,27 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 app.use(fileUpload())
 
 // Session control 
-app.use(session({
-    secret: "aazaezezeaeaz",
-    resave: false,
-    saveUninitialized: true,
-    cookie: {secure: false}
-}))  
+ app.use(session({
+     secret: "aazaezezeaeaz",
+     resave: false,
+     saveUninitialized: true,
+     cookie: {secure: false}
+ }))  
 
-// User erros on pages
-app.use(handler.userErrors)
+// // User erros on pages
+ app.use(handler.userErrors)
 
-// save session
-app.use(authent.sessionRegistry)
+// // save session
+ app.use(authent.sessionRegistry)
 
 //Route default
 app.use('/info', router)  
 
-// System erros
-app.use(handler.systemErrorHandler)
+// // System erros
+ app.use(handler.systemErrorHandler)
 
-// Not found errors
-app.use(handler.notFoundHandler)
+// // Not found errors
+ app.use(handler.notFoundHandler)
 //
 
 

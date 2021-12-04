@@ -17,8 +17,9 @@ export default {
                     liensArticle: liensArticle,
                     idTypeArticle: typeArticle,
                     idUtilisateur: request.session.user.idUtilisateur
-                }
+                } 
             })
+                    response.redirect('/info/admin')
         } else {
             request.errors('Veuillez reseigner tous les chmaps', '/info')
         } 
@@ -35,7 +36,8 @@ export default {
                     }
                 }
             })
-            return response.json(article)
+            response.locals.article = article
+            return response.render('visiteurs/article/listeArticle')
         }else{
             return response.errors('type d\' article non trouver','/info')
         }

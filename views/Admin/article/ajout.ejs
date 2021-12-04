@@ -1,0 +1,67 @@
+<%- include ('../../include/side.ejs')  %> 
+
+<div class="container-lg">
+  <div class="row justify-content-center">
+      <div class="col-12 col-lg-10 col-xl-8">
+          <form class="tab-content py-6" id="wizardSteps" action="/info/admin/article/create" method="post"  enctype="multipart/form-data">
+              <div class="tab-pane fade show active" id="wizardStepOne" role="tabpanel" aria-labelledby="wizardTabOne">
+                  <div class="row justify-content-center">
+                      <div class="col-12 col-md-10 col-lg-8 col-xl-6 text-center">
+
+                          <h1 class="mb-3">
+                          Ajouter un article
+                          </h1>
+
+                      </div>
+                  </div>
+                  <!-- Team name -->
+                  <div class="form-group">
+                      <label class="form-label">
+                          Titre de l'article
+                      </label>
+                      <input type="text" name="titreArticle" class="form-control">
+                  </div>
+
+                  <div class="form-group">
+                      <label class="form-label">
+                          Liens sur l'article
+                      </label>
+                      <input type="text"  class="form-control">
+                  </div>
+
+                  <!-- Team description -->
+                  <div class="form-group">
+                      <label class="form-label mb-1">
+                          Description
+                      </label>
+                      <textarea class="form-control" name="descriptionArticle" id="" cols="30" rows="10"></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label mb-1">
+                        photo
+                    </label>
+                    <input type="file" name="imageArticle" class="form-control" >
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label mb-1">
+                        le type d'article
+                    </label>
+                    <select  class="form-control" name="typeArticle">
+                        
+                        <% if (locals.TypeArticle) { %>  
+                            <% locals.TypeArticle.forEach(element => {  %>
+                                <option value="<%= element.idTypeArticle %>"><%= element.libelleTypeAticle %> </option>
+                            <% }) %>
+                        <% } %>
+                        
+                        
+                      </select>
+                  </div>    
+              </div>      
+              <button type="submit" class="btn btn-lg btn-primary">Continue</button>
+          </form>
+
+      </div>
+  </div>
+</div>

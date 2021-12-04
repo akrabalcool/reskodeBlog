@@ -8,7 +8,7 @@ async function ajouterTypeArticle (){
 
     await prisma.typeArticle.create({
         data:{
-            libelleTypeAticle: "scientifique"
+            libelleTypeAticle: ""
         }
     })
 
@@ -25,6 +25,6 @@ async function ajouterUtilisateur (){
 
         
 
-ajouterUtilisateur()
+//ajouterUtilisateur()
 
-//ajouterTypeArticle()
+ajouterTypeArticle()
