@@ -36,6 +36,10 @@ export default {
                     }
                 }
             })
+            
+            //article.descriptionArticle.slice(1,100)
+            
+            article.forEach(element =>{ element.desc = element.descriptionArticle.slice(1,200) })
             response.locals.article = article
             return response.render('visiteurs/article/listeArticle')
         }else{
@@ -51,7 +55,14 @@ export default {
                     idArticle:idArticle
                 }
             })
+            
+            response.locals.article = article
+            
+            return response.render('visiteurs/article/voirArticle')
+        }else{
+            return response.errors('l\'article n\'exit plus ','/info')
         }
+        
     },
 
     supprimer: async (request,response)=>{

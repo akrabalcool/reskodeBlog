@@ -1,30 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Blogzine - Blog and Magazine Bootstrap 5 Theme</title>
-	<!-- Meta Tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="author" content="Webestica.com">
-	<meta name="description" content="Bootstrap based News, Magazine and Blog Theme">
-
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="assets/images/favicon.ico">
-
-	<!-- Google Font -->
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="css2.css?family=Nunito+Sans:wght@400;700&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
-
-	<!-- Plugins CSS -->
-	<link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
-	<link rel="stylesheet" type="text/css" href="assets/vendor/tiny-slider/tiny-slider.css">
-
-	<!-- Theme CSS -->
-	<link id="style-switch" rel="stylesheet" type="text/css" href="assets/css/style.css">
-</head>
-
-<body>
+<%- include('../../include/header') %> 
 
     <main>
         <section class="pb-3 pb-lg-5">
@@ -47,7 +21,7 @@
                             <!-- Author info -->
                             <div class="position-relative">
                                 <div class="avatar avatar-xl">
-                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/03.jpg" alt="avatar">
+                                    <img class="avatar-img rounded-circle" src="/front/assets/images/avatar/03.jpg" alt="avatar">
                                 </div>
                                 <a href="#" class="h5 stretched-link mt-2 mb-0 d-block">Louis Ferguson</a>
                                 <p>An editor at Blogzine</p>
@@ -85,12 +59,7 @@
                             <div class="row">
                                 <!-- Main Content START -->
                                 
-                                      <p><span class="dropcap">A</span>light newspaper up its enjoyment agreeable depending. Timed voice share led him to widen noisy young. At weddings believed laughing although the material does the exercise of. Up attempt offered ye civilly so sitting to. She new course gets living within Elinor joy. She rapturous suffering concealed. </p>
-                                    <p>Demesne far hearted suppose venture excited see had has. Dependent on so extremely delivered by. Yet no jokes worse her why. Bed one supposing breakfast day fulfilled off depending questions. Whatever boy her exertion his extended. Ecstatic followed handsome drawings entirely Mrs one yet outweigh. Of acceptance insipidity remarkably is an invitation. </p>
-                    
-                                    <p>Warrant private blushes removed an in equally totally if. Delivered dejection necessary objection do Mr prevailed. Mr feeling does chiefly cordial in do. Water timed folly right aware if oh truth. Imprudence attachment him his for sympathize. Large above be to means. Dashwood does provide stronger is. <img src="assets/images/blog/4by3/thumb/04.jpg" class="rounded float-start me-3 my-3" alt="..."> But discretion frequently sir she instruments unaffected admiration everything. Meant balls it if up doubt small purse. Required his you put the outlived answered position. A pleasure exertion if believed provided to. All led out world this music while asked. Paid mind even sons does he door no. Attended overcame repeated it is perceived Marianne in. I think on style child of. Servants moreover in sensible it ye possible. Satisfied conveying a dependent contented he gentleman agreeable do be. Water timed folly right aware if oh truth. Imprudence attachment him his for sympathize. Large above be to means. Dashwood does provide stronger is.<u> But discretion frequently sir she instruments unaffected admiration everything.</u> Meant balls it if up doubt small purse. Required his you put the outlived answered position. A pleasure exertion if believed provided to. I think on style child of. Servants moreover in sensible it ye possible. </p>				
-                    
-                                    <p>Satisfied conveying a dependent contented he gentleman agreeable do be. Warrant private blushes removed an in equally totally if. Delivered dejection necessary objection do Mr prevailed. Mr feeling does chiefly cordial in do. Water timed folly right aware if oh truth. Imprudence attachment him his for sympathize. Large above be to means. Dashwood does provide stronger is. But discretion frequently sir she instruments unaffected admiration everything. Meant balls it if up doubt small purse. Required his you put the outlived answered position. A pleasure exertion if believed provided to. All led out world this music while asked. Paid mind even sons does he door no. Attended overcame repeated it is perceived Marianne in. I think on style child of. Servants moreover in sensible it ye possible. </p>
+                                      <p><span class="dropcap">A</span><%= article.descriptionArticle %>  </p>
                     
                                     <!-- Divider -->
                                     <div class="text-center h5 mb-4">. . .</div>
@@ -107,7 +76,7 @@
                             <!-- Advertisement -->
                             <div class="mt-4">
                                 <a href="#" class="d-block card-img-flash">
-                                    <img src="assets/images/adv.png" alt="">
+                                    <img src="/front/assets/images/adv.png" alt="">
                                 </a>
                             </div>
                         </div>
@@ -118,7 +87,7 @@
                         <h3>5 comments</h3>
                         <!-- Comment level 1-->
                         <div class="my-4 d-flex">
-                          <img class="avatar avatar-md rounded-circle float-start me-3" src="assets/images/avatar/01.jpg" alt="avatar">
+                          <img class="avatar avatar-md rounded-circle float-start me-3" src="/front/assets/images/avatar/01.jpg" alt="avatar">
                           <div>
                             <div class="mb-2">
                                 <h5 class="m-0">Allen Smith</h5>
@@ -163,13 +132,13 @@
 JS libraries, plugins and custom scripts -->
 
 <!-- Bootstrap JS -->
-<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Vendors -->
-<script src="assets/vendor/tiny-slider/tiny-slider.js"></script>
+<script src="/front/assets/vendor/tiny-slider/tiny-slider.js"></script>
 
 <!-- Template Functions -->
-<script src="assets/js/functions.js"></script>
+<script src="/front/assets/js/functions.js"></script>
 
 </body>
 </html>
