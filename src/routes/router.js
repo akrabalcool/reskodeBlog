@@ -17,14 +17,25 @@ export default (() => {
 
     // Routes / (root principal)
     
-    blog.route('/').get((request,response)=>{
-        let article = await prisma.article.findMany()
-        
-        //article.descriptionArticle.slice(1,100)
-        
-        article.forEach(element =>{ element.desc = element.descriptionArticle.slice(1,200) })
-        response.locals.article = article
-       response.render('visiteurs/index.ejs')
+    blog.route('/').get( async (request,response)=>{
+        let article = await prisma.article.findMany({
+            orderBy:{
+                datePublication:'desc'
+            },
+        })
+        article.forEach(element =>{ element.desc = element.descriptionArticle.slice(1,30) })
+        response.locals.article =  article
+        let arti= []
+        if (article.length>5) {
+            for (let i = 0; i < 4; i++) { 
+                 arti.push(article[i])  
+                
+            }
+            response.locals.article =  arti
+        }
+         
+        console.log(response.locals.article.length);
+        return  response.render('visiteurs/index.ejs')
     }) 
     // L'ajout du middleware homeOff permet de desactiver le fonctionnment de la page
 

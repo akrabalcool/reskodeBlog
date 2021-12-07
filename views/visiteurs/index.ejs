@@ -290,44 +290,33 @@
 <section class="pt-4 pb-0">
 	<div class="container">
 		<div class="row">
-			<!--first-->
-			<div class="col-sm-6 col-lg-3">
-				<div class="card mb-4">
-					<!-- Card img -->
-					<div class="card-fold position-relative">
-						<img class="card-img" src="assets/images/blog/4by3/07.jpg" alt="Card image">
-					</div>
-					<div class="card-body px-0 pt-3">
-						<h4 class="card-title"><a href="post-single.html" class="btn-link text-reset stretched-link fw-bold">7 common mistakes everyone makes while traveling</a></h4>
-						<!-- Card info -->
-						<ul class="nav nav-divider align-items-center text-uppercase small">
-							<li class="nav-item">
-								<a href="#" class="nav-link text-reset btn-link">Louis Ferguson</a>
-							</li>
-							<li class="nav-item">Mar 07, 2021</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<!--deuxieme-->
-			<div class="col-sm-6 col-lg-3">
-				<div class="card mb-4">
-					<!-- Card img -->
-					<div class="card-fold position-relative">
-						<img class="card-img" src="assets/images/blog/4by3/07.jpg" alt="Card image">
-					</div>
-					<div class="card-body px-0 pt-3">
-						<h4 class="card-title"><a href="post-single.html" class="btn-link text-reset stretched-link fw-bold">7 common mistakes everyone makes while traveling</a></h4>
-						<!-- Card info -->
-						<ul class="nav nav-divider align-items-center text-uppercase small">
-							<li class="nav-item">
-								<a href="#" class="nav-link text-reset btn-link">Louis Ferguson</a>
-							</li>
-							<li class="nav-item">Mar 07, 2021</li>
-						</ul>
+
+			<% if (locals.article) { %>
+				<% article.forEach(element => { %>
+				  <!--first-->
+				  <div class="col-sm-6 col-lg-3">
+					<div class="card mb-4">
+						<!-- Card img -->
+						<div class="card-fold position-relative">
+							<img class="rounded-3" src="data:image/png;base64,<%= element.imageArticle %> " alt="Card image" style="height:250px; width: 320px" >
+						</div>
+						<div class="card-body px-0 pt-3">
+							<h4 class="card-title"><a href="/info/article/lire/<%= element.idArticle %>" class="btn-link text-reset stretched-link fw-bold"><%= element.titreArticle  %></a></h4>
+							<!-- Card info -->
+							<ul class="nav nav-divider align-items-center text-uppercase small">
+								<li class="nav-item">
+									<a href="#" class="nav-link text-reset btn-link"><%- element.desc %></a>
+								</li>
+								<li class="nav-item">Mar 07, 2021</li>
+							</ul>
+						</div>
 					</div>
 				</div>
-			</div>
+				<% }) %>
+			<% } %>
+			
+				
+			
 		</div>
 	</div>
 </section>
