@@ -1,5 +1,4 @@
 // Imported modules from node_modules
-import express from "express";
 import fileUpload from "express-fileupload";
 import session from "express-session";
 import handler from './src/middlewares/handler.js'

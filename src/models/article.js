@@ -1,6 +1,7 @@
 import pkg from '@prisma/client'
 const {PrismaClient} = pkg
 const prisma = new PrismaClient()
+import commentaire from './commentaire.js'
 
 export default {
 
@@ -34,6 +35,9 @@ export default {
                     typeArticle:{
                         libelleTypeAticle: typeArticle
                     }
+                },
+                orderBy:{
+                    
                 }
             })
             
@@ -45,7 +49,7 @@ export default {
         }else{
             return response.errors('type d\' article non trouver','/info')
         }
-    },
+    }, 
 
     chercherParid: async (request,response)=>{
         let {idArticle} = request.params
@@ -57,10 +61,10 @@ export default {
             })
             
             response.locals.article = article
-            
+            response.locals.commentaire = await commentaire.articleCommentaire(idArticle)
             return response.render('visiteurs/article/voirArticle')
         }else{
-            return response.errors('l\'article n\'exit plus ','/info')
+            return request.errors('l\'article n\'exit plus ','/info')
         }
         
     },

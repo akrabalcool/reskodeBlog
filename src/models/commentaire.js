@@ -15,22 +15,35 @@ export default {
             })
             return response
         }
-        return response
+        return request
     },
 
     ajouterCommentaire: async (request,response)=>{
         let {idArticle} = request.params
         let {nomOuEmail,contenu} = request.body
         if(idArticle){
-            let commentaire = await prisma.commentaire.create({
-                data: {
-                    contenuCommentaire: contenu,
-                    idArticle: idArticle,
-                    nomOuEmail: nomOuEmail
-                }
-            })  
-            return  response.json(commentaire)
+            if ((contenu !="")&&(nomOuEmail!="")){
+                let commentaire = await prisma.commentaire.create({
+                    data: {
+                        contenuCommentaire: contenu,
+                        idArticle: idArticle,
+                        nomOuEmail: nomOuEmail
+                    }
+                })  
+                return  response.redirect('/info/article/lire/'+idArticle)
+            }
+                console.log(contenu,nomOuEmail);
+                return  response.redirect('/info/article/lire/'+idArticle)
         }
-        return response.redirect()
+        return request.error('erreur pas d\'article preciser', '/info')
+    },
+
+    articleCommentaire: async (id)=>{
+        let comt = await prisma.commentaire.findMany({
+            where:{
+                idArticle: id
+            }
+        })
+        return comt 
     }
 }
