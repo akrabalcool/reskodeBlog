@@ -45,6 +45,7 @@ export default {
             
             article.forEach(element =>{ element.desc = element.descriptionArticle.slice(1,200) })
             response.locals.article = article
+            response.locals.typeArticle = typeArticle
             return response.render('visiteurs/article/listeArticle')
         }else{
             return response.errors('type d\' article non trouver','/info')

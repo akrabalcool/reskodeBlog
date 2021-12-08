@@ -10,8 +10,8 @@
                         <div class="w-100 my-auto">
                                         <div class="text-white mb-3">Browsing category:</div>
                           <h1 class="text-white h2">
-                                            <span class="badge bg-warning mb-2">
-                                                <i class="fas fa-circle me-2 small fw-bold"></i>Technology</span>
+                                            <span class="badge <% if (typeArticle=='scientifique') { %><%='bg-primary'%><% }%> <% if (typeArticle=='juridique') { %><%='bg-dark'%><% }%> <% if (typeArticle=='economique') { %><%='bg-danger'%><% }%> mb-2">
+                                                <i class="fas fa-circle me-2 small fw-bold"></i><%= typeArticle  %> </span>
                                         </h1>
                           <div class="text-center position-relative">
                                             <span class="badge bg-info fs-6">14 posts</span>
@@ -29,9 +29,7 @@
                                 <div class="card border rounded-3 up-hover p-4 mb-4">
                                     <div class="row g-3">
                                         <div class="col-lg-5">
-                                            <!-- Categories -->
-                                            <a href="#" class="badge bg-primary mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Tricks</a>
-                                            <a href="#" class="badge bg-dark mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Photography</a>
+                                           
                                             <!-- Title -->
                                             <h2 class="card-title">
                                                 <a href="/info/article/lire/<%= element.idArticle %> " class="btn-link text-reset stretched-link"><%= element.titreArticle  %> </a>

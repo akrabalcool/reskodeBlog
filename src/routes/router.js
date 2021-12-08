@@ -22,19 +22,20 @@ export default (() => {
             orderBy:{
                 datePublication:'desc'
             },
+            include:{
+                typeArticle:true 
+            }
         })
         article.forEach(element =>{ element.desc = element.descriptionArticle.slice(1,30) })
         response.locals.article =  article
         let arti= []
         if (article.length>5) {
             for (let i = 0; i < 4; i++) { 
-                 arti.push(article[i])  
-                
+                 arti.push(article[i])   
             }
             response.locals.article =  arti
         }
          
-        console.log(response.locals.article.length);
         return  response.render('visiteurs/index.ejs')
     }) 
     // L'ajout du middleware homeOff permet de desactiver le fonctionnment de la page
