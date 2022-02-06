@@ -1,0 +1,78 @@
+<%- include('../../include/header') %> 
+<section class="pt-4">
+	<div class="container">
+		<div class="row">
+      <div class="col-12">
+        <div class="card bg-dark-overlay-4 overflow-hidden card-bg-scale h-300 text-center" style="background-image:url(/front/assets/images/blog/16by9/08.jpg); background-position: center left; background-size: cover;">
+            <!-- Card Image overlay -->
+            <div class="card-img-overlay d-flex align-items-center p-3 p-sm-4"> 
+              <div class="w-100 my-auto">
+                              <div class="text-white mb-3">Browsing category:</div>
+                <h1 class="text-white h2">
+                                  <span class="badge <% if (typeArticle=='scientifique') { %><%='bg-primary'%><% }%> <% if (typeArticle=='juridique') { %><%='bg-dark'%><% }%> <% if (typeArticle=='economique') { %><%='bg-danger'%><% }%> mb-2">
+                                      <i class="fas fa-circle me-2 small fw-bold"></i><%= typeArticle  %> </span>
+                </h1>
+                <div class="text-center position-relative">
+                                  <span class="badge bg-info fs-6"><% if(article){ %>  <%= article.length  %>   <%} %>  posts</span>
+                              </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+	</div>
+</section>
+
+<section class="position-relative pt-0">
+	<div class="container" data-sticky-container="">
+		<div class="row">
+            
+
+			<!-- Main Post START -->
+			<div class="col-lg-9">
+				<div class="row gy-4">
+                   
+            <% if (locals.article) { %>
+                <% article.forEach(element => { %>
+                     <!-- Card item START -->
+					<div class="col-sm-6">
+						<div class="card">
+							<!-- Card img -->
+							<div class="position-relative">
+								<img class="card-img" src="data:image/png;base64,<%= element.imageArticle %> " style="height:250px"  alt="Card image"> <!-- ; width: 320px" -->
+								<div class="card-img-overlay d-flex align-items-start flex-column p-3">
+									<!-- Card overlay bottom -->
+									<div class="w-100 mt-auto">
+										<!-- Card category -->
+										<a href="#" class="badge <% if (element.typeArticle.libelleTypeAticle=='scientifique') { %><%='bg-primary'%><% }%> <% if (element.typeArticle.libelleTypeAticle=='juridique') { %><%='bg-dark'%><% }%> <% if (element.typeArticle.libelleTypeAticle=='economique') { %><%='bg-danger'%><% }%> mb-2"> <i class="fas fa-circle me-2 small fw-bold"></i><%= element.typeArticle.libelleTypeAticle %> </a>
+									</div>
+								</div>
+							</div>
+							<div class="card-body px-0 pt-3">
+								<h4 class="card-title"><a href="/info/article/lire/<%= element.idArticle %>" class="btn-link text-reset fw-bold"><%= element.titreArticle  %> </a></h4>
+								<p class="card-text">  <p><%- element.desc %>.... </p></p>
+								<!-- Card info -->
+								<ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
+									<li class="nav-item">
+										<div class="nav-link">
+											<div class="d-flex align-items-center position-relative">
+												<div class="avatar avatar-xs">
+													<img class="avatar-img rounded-circle" src="/front/assets/images/avatar/04.jpg" alt="avatar">
+												</div>
+												<span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span>
+											</div>
+										</div>
+									</li>
+									<li class="nav-item">Jan 22, 2021</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- Card item END -->
+                <% }) %>
+            <% } %>    
+                </div>
+			</div>   
+        </div> 
+    </div>
+</section>

@@ -1,0 +1,22 @@
+
+<h1>liste des articles <%= locals.typeArticle %>  </h1>
+
+<ul>
+    
+        <% if (locals.article) { %>
+            
+             <% article.forEach(element => { %>
+                <p>
+                        <li><%= element.idArticle %></li>  
+                        <li><%= element.titreArticle  %></li>
+                        <li><%- element.desc %></li>
+                        <li>supprimer  <a href="/info/admin/article/supprimer/<%=element.idArticle%>"> supprimer</a></li>
+                        <li>modifier <a href="/info/admin/article/modifier/<%=element.idArticle%> ">modifier</a></li>
+                </p>
+             <% }) %>
+         
+            
+         <% } %>     
+        
+    
+</ul>

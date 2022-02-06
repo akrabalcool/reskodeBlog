@@ -10,6 +10,7 @@ import admin from "../admin/admin.js"
 import article from "../models/article.js"
 import commentaire from "../models/commentaire.js"
 
+
 // Routers
 export default (() => {
     // Configuration des routes
@@ -39,7 +40,7 @@ export default (() => {
         return  response.render('visiteurs/index.ejs')
     }) 
     // L'ajout du middleware homeOff permet de desactiver le fonctionnment de la page
-
+    blog.route('/chercher').post(article.chercherParString);
     blog.route('/article/lire/:idArticle').get(article.chercherParid)
 
     blog.route('/article/ajoutCommentaire/:idArticle').post(commentaire.ajouterCommentaire)
@@ -61,10 +62,15 @@ export default (() => {
     blog.route('/admin/article/supprimer/:idArticle').get(article.supprimer)
 
     blog.route('/admin/article/delete/:idArticle').post(authent.loginVerification, admin.retirerArticle)
+
+    blog.route('/admin/article/liste/:typeArticle').get(authent.loginVerification,admin.listeAModifier)
     
     blog.route('/admin/article/modifier/:idArticle').post(authent.loginVerification, admin.modifierArticle)
     
+    blog.route('/admin/article/modifier/:idArticle').get(authent.loginVerification, admin.modifierArticleGet)
+
     blog.route('/admin/supprimerCommentaire/:idArticle').get(authent.loginVerification, admin.supprimerCommentaire)
+
 
     return blog
 })()

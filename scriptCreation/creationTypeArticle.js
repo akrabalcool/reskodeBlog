@@ -4,14 +4,20 @@ const {PrismaClient} = pkg
 const prisma = new PrismaClient();
 
 
-async function ajouterTypeArticle (){
+async function ajouterTypeArticle (nom){
 
     await prisma.typeArticle.create({
         data:{
-            libelleTypeAticle: ""
+            libelleTypeAticle: nom
         }
     })
 
+}
+
+async function addArticle(){
+    ajouterTypeArticle("juridique")
+    ajouterTypeArticle("economique")
+    ajouterTypeArticle("scientifique")
 }
 
 async function ajouterUtilisateur (){
@@ -26,5 +32,5 @@ async function ajouterUtilisateur (){
         
 
 //ajouterUtilisateur()
+addArticle()
 
-ajouterTypeArticle()

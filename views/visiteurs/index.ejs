@@ -19,7 +19,6 @@
 	<link rel="stylesheet" type="text/css" href="/front/assets/vendor/font-awesome/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="/front/assets/vendor/bootstrap-icons/bootstrap-icons.css">
 	<link rel="stylesheet" type="text/css" href="/front/assets/vendor/tiny-slider/tiny-slider.css">
-
 	<!-- Theme CSS -->
 	<link id="style-switch" rel="stylesheet" type="text/css" href="/front/assets/css/style.css">
 </head>
@@ -48,8 +47,8 @@
                     <!-- Nav Search START -->
                     <div class="nav mt-3 mt-lg-0 px-4 flex-nowrap align-items-center">
                         <div class="nav-item w-100">
-                            <form class="rounded position-relative">
-                                <input class="form-control pe-5 bg-light" type="search" placeholder="Search the blog" aria-label="Search">
+                            <form class="rounded position-relative" method="post" action="/info/chercher">
+                                <input class="form-control pe-5 bg-light" name="chercher" type="search" placeholder="chercher un article" aria-label="Search">
                                 <button class="btn bg-transparent px-2 py-0 position-absolute top-50 end-0 translate-middle-y" type="submit"><i class="bi bi-search fs-5"> </i></button>
                             </form>
                         </div>
@@ -71,11 +70,14 @@
                                 <li> <a class="dropdown-item" href="/info/article/scientifique">scientifique</a></li>
                                 <li> <a class="dropdown-item" href="/info/index-2.html">et quelle que chose </a></li>
 							</ul>	
-                        </li>
+                        </li> 
     
                         <!-- Nav item 3 Post -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Post</a>
+							<ul class="dropdown-menu" aria-labelledby="postMenu">
+                                <li> <a class="dropdown-item" href="/info/login">login</a></li>
+							</ul>	
                         </li>
     
                     </ul>
@@ -286,7 +288,7 @@
 		</div>
 	</div>
 </section>
-
+<!--  on garde on garde  -->
 <section class="pt-4 pb-0">
 	<div class="container">
 		<div class="row">
@@ -298,7 +300,7 @@
 					<div class="card mb-4">
 						<!-- Card img -->
 						<div class="card-fold position-relative">
-							<img class="rounded-3" src="data:image/png;base64,<%= element.imageArticle %> " alt="Card image" style="height:250px; width: 320px" >
+							<img class="rounded-3" src="data:image/png;base64,<%= element.imageArticle %> " alt="Card image" style="height:150px; width: 220px" >
 						</div>
 						<div class="card-body px-0 pt-3">
 							<h4 class="card-title"><a href="/info/article/lire/<%= element.idArticle %>" class="btn-link text-reset stretched-link fw-bold"><%= element.titreArticle  %></a> <a href="#" class="badge <% if (element.typeArticle.libelleTypeAticle=='scientifique') { %><%='bg-primary'%><% }%> <% if (element.typeArticle.libelleTypeAticle=='juridique') { %><%='bg-dark'%><% }%> <% if (element.typeArticle.libelleTypeAticle=='economique') { %><%='bg-danger'%><% }%>    mb-2"><i class="fas fa-circle me-2 small fw-bold"></i><%= element.typeArticle.libelleTypeAticle  %> </a></h4>
@@ -314,12 +316,15 @@
 				</div>
 				<% }) %>
 			<% } %>
-			
-				
-			
 		</div>
 	</div>
 </section>
+<!--  on garde on garde  -->
+
+
+
+
+
 <!-- a propos de nous -->
 <section class="pt-4 pb-0">
 	<div class="container">

@@ -30,7 +30,7 @@ export default {
                         nomOuEmail: nomOuEmail
                     }
                 })  
-                return  response.redirect('/info/article/lire/'+idArticle)
+                return  response.redirect('/info/article/lire/'+idArticle+"#comment")
             }
                 console.log(contenu,nomOuEmail);
                 return  response.redirect('/info/article/lire/'+idArticle)

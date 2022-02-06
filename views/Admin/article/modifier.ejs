@@ -3,23 +3,23 @@
 <div class="container-lg">
   <div class="row justify-content-center">
       <div class="col-12 col-lg-10 col-xl-8">
-          <form class="tab-content py-6" id="wizardSteps" action="/info/admin/article/create" method="post"  enctype="multipart/form-data">
+          <form class="tab-content py-6" id="wizardSteps" action="/info/admin/article/modifier/<%= article.idArticle %> " method="post"  enctype="multipart/form-data">
               <div class="tab-pane fade show active" id="wizardStepOne" role="tabpanel" aria-labelledby="wizardTabOne">
                   <div class="row justify-content-center">
                       <div class="col-12 col-md-10 col-lg-8 col-xl-6 text-center">
 
                           <h1 class="mb-3">
-                          Ajouter un article
+                            Modifier un article
                           </h1>
-
+                            
                       </div>
                   </div>
                   <!-- Team name -->
                   <div class="form-group">
                       <label class="form-label">
-                          Titre de l'article
+                        Changer le Titre de l'article
                       </label>
-                      <input type="text" name="titreArticle" class="form-control">
+                      <input type="text" value="<%= article.titreArticle%> " name="titreArticle" class="form-control">
                   </div>
                   <!--
                       <div class="form-group">
@@ -35,18 +35,18 @@
                       <label class="form-label mb-1">
                           Description
                       </label>
-                      <textarea class="form-control" name="descriptionArticle" id="" cols="30" rows="10"></textarea>
+                      <textarea   class="form-control"  name="descriptionArticle" id="" cols="30" rows="10"> <%= article.descriptionArticle  %>  </textarea>
                   </div>
 
                   <div class="form-group">
                     <label class="form-label mb-1">
-                        photo
+                     Choisir une autre  photo
                     </label>
                     <input type="file" name="imageArticle" class="form-control" >
                   </div>
                   <div class="form-group">
                     <label class="form-label mb-1">
-                        le type d'article
+                     Modifier le type d'article
                     </label>
                     <select  class="form-control" name="typeArticle">
                         
