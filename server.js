@@ -41,7 +41,7 @@ app.use(fileUpload())
  app.use(authent.sessionRegistry)
 
 //Route default
-app.use('/info', router)  
+app.use('/', router)  
 
 // // System erros
  app.use(handler.systemErrorHandler)
