@@ -26,23 +26,33 @@ export default {
                     idUtilisateur: request.session.user.idUtilisateur
                 } 
             })
-                    response.redirect('/info/admin')
+                    response.redirect('admin')
         } else {
-            request.errors('Veuillez reseigner tous les chmaps', '/info')
+            request.errors('Veuillez reseigner tous les chmaps', '/')
         } 
     },
 
     chercherParString:async (request,response)=>{
         let { chercher } = request.body
-        let article = await prisma.article.findMany({
+        let article = await prisma.article.findMany({    
             where:{
-                titreArticle: {
-                    contains: chercher,
+                OR:{  
+                    descriptionArticle:{
+                        contains :chercher
+                    },
+                    titreArticle: {
+                        contains: chercher
+                    }
                 }
             }
         })
         response.locals.article = article
-        response.render('visiteurs/article/sortieChercher')
+        if (request.session.user) {
+           response.render('Admin/article/liste') 
+        }else{
+            response.render('visiteurs/article/sortieChercher')
+        }
+        
     },
 
     chercherParType: async (request,response) =>{
@@ -71,7 +81,7 @@ export default {
             response.locals.typeArticle = typeArticle
             return response.render('visiteurs/article/listeArticleCareaux')
         }else{
-            return response.errors('type d\' article non trouver','/info')
+            return response.errors('type d\' article non trouver','/')
         }
     }, 
 
@@ -81,14 +91,18 @@ export default {
             let article = await prisma.article.findUnique({
                 where:{
                     idArticle:idArticle
+                },
+                include:{
+                    typeArticle: true
                 }
+                
             })
 
             response.locals.article = article
             response.locals.commentaire = await commentaire.articleCommentaire(idArticle)
             return response.render('visiteurs/article/voirArticle')
         }else{
-            return request.errors('l\'article n\'exit plus ','/info')
+            return request.errors('l\'article n\'exit plus ','/')
         }
         
     },
@@ -101,7 +115,7 @@ export default {
                     idArticle:idArticle
                 }
             })
-            return request.errors('l\'article '+article.titreArticle+'a ete supprimer','/info/admin')
+            return request.errors('l\'article '+article.titreArticle+'a ete supprimer','/admin')
         }
     },
     
@@ -111,6 +125,9 @@ export default {
             let article = await prisma.article.findUnique({
                 where:{
                     idArticle:idArticle
+                },
+                include:{
+                    typeArticle:true 
                 }
             })
             response.locals.article = article
@@ -118,7 +135,7 @@ export default {
             response.locals.TypeArticle = typeArticle
             return response.render('Admin/article/modifier')
         }else{
-            return request.errors('l\'article n\'exit plus ','/info')
+            return request.errors('l\'article n\'exit plus ','/')
         }
 
     },
@@ -138,7 +155,7 @@ export default {
                     idTypeArticle: typeArticle
                 }
             })
-            return request.errors("l'article "+ article.titreArticle+" "+"a ete modifier",'/info/admin')
+            return request.errors("l'article "+ article.titreArticle+" "+"a ete modifier",'/admin')
         }
         
     }

@@ -17,12 +17,12 @@ export default {
                 }
             })
             if(utilisateur && (await bcrypt.compare(passwordUtilisateur, utilisateur.passwordUtilisateur))) {
-                request.userLogin(utilisateur, '/info/admin')
+                request.userLogin(utilisateur, 'admin')
             } else {
-                request.errors('Invalid credentials', '/info/')
+                request.errors('Invalid credentials', '/')
             }
         } else {
-            request.errors('Veuillez renseigner tous les champs', '/info')
+            request.errors('Veuillez renseigner tous les champs', '/')
         }
     } 
 }

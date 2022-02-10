@@ -69,8 +69,8 @@ export default (() => {
     
     blog.route('/admin/article/modifier/:idArticle').get(authent.loginVerification, admin.modifierArticleGet)
 
-    blog.route('/admin/supprimerCommentaire/:idArticle').get(authent.loginVerification, admin.supprimerCommentaire)
-
+    blog.route('/admin/supprimerCommentaire/:idCommentaire/:idArticle').get(authent.loginVerification, admin.supprimerCommentaire)
+    blog.route('/admin/deconnect').get(admin.deconnect)
 
     return blog
 })()

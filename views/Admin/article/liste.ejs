@@ -1,22 +1,74 @@
-
-<h1>liste des articles <%= locals.typeArticle %>  </h1>
-
-<ul>
+<%- include('../../include/header') %> 
+<section class="pt-4">
+	<div class="container">
+		<div class="row">
+            <div class="col-lg-9 mx-auto text-center py-5">
+                    <h1 class="display-4">liste des articles <%= locals.typeArticle %>  </h1>
+            </div>
+        </div>
+    </div>
+</section>                    
+ <div>
     
-        <% if (locals.article) { %>
-            
-             <% article.forEach(element => { %>
-                <p>
-                        <li><%= element.idArticle %></li>  
-                        <li><%= element.titreArticle  %></li>
-                        <li><%- element.desc %></li>
-                        <li>supprimer  <a href="/info/admin/article/supprimer/<%=element.idArticle%>"> supprimer</a></li>
-                        <li>modifier <a href="/info/admin/article/modifier/<%=element.idArticle%> ">modifier</a></li>
-                </p>
-             <% }) %>
-         
-            
-         <% } %>     
-        
+ </div>
+<section class="pt-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 mx-auto">
+                    
+                        <% if (locals.article) { %>
+                            <% article.forEach(element => { %>
+                                <div class="card border rounded-3  p-4 mb-4">
+                                    <div class="row g-3">
+                                        <div class="col-sm-9"> 
+                                            <!-- Title -->
+                                            <h2 class="card-title">
+                                                <%= element.titreArticle  %> 
+                                            </h2>
+                                            <!-- Author info -->
+                                            <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
+                                                <li class="nav-item">
+                                                    <div class="nav-link">
+                                                        <div class="d-flex align-items-center position-relative">
+                                                            <div class="avatar avatar-xs">
+                                                                <img class="avatar-img rounded-circle" src="/front/assets/images/avatar/04.jpg" alt="avatar">
+                                                            </div>
+                                                            <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="nav-item">Jan 22, 2021</li>
+                                            </ul>
+                                            <a href="/admin/article/supprimer/<%=element.idArticle%>" class="badge bg-danger"> supprimer</a>
+                                            <a href="/admin/article/modifier/<%=element.idArticle%>" class="badge bg-primary ">modifier</a>
+                                            <a href="/article/lire/<%=element.idArticle%> " class="badge bg-black ">voir rendu</a>
+                                        </div>
+                                        
+                                        <!-- Image -->
+                                        <div class="col-sm-3">
+                                            <img class="rounded-3" src="data:image/png;base64,<%= element.imageArticle %> " alt="Card image" >
+                                        </div>
+                                    </div>  
+                                </div>  
+                            <% }) %>
+                        <% } %>
+                   
+                </div>
+            </div>
     
-</ul>
+            <div class="col-lg-3 mt-5 mt-lg-0">
+                <div data-sticky="" data-margin-top="80" data-sticky-for="767">
+                    <!-- Categories -->
+                    
+                    <!-- ADV widget START -->
+                    <div class="col-12 col-sm-6 col-lg-12 my-4">
+                        <a href="#" class="d-block card-img-flash">
+                            <img src="/front/assets/images/adv.png" alt="">
+                        </a>
+                    
+                    </div>
+                    <!-- ADV widget END -->
+                </div>
+            </div>
+    
+    </section>

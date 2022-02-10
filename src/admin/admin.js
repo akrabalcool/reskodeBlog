@@ -15,7 +15,7 @@ export default {
    
 
     index: (request, response) => {
-        response.render('include/side')
+        response.render('include/header')
     },
 
     ajouterArticle:Article.ajouter,
@@ -59,8 +59,13 @@ export default {
             response.locals.typeArticle = typeArticle
             return response.render('Admin/article/liste')
         }else{
-            return response.errors('type d\' article non trouver','/info')
+            return response.errors('type d\' article non trouver','/')
         }
+    },
+
+    deconnect:async (request,response)=>{
+        request.session.user = undefined
+        return request.errors('utilisateur  deconnecter','/')
     },
 
     retirerArticle:Article.supprimer,

@@ -6,7 +6,7 @@ export default {
 
     loginVerification: (request, response, next) => { 
         if(!request.session.user) {
-            request.errors('Login to continue', '/info')
+            request.errors('Login to continue', '/')
         } else {
             next()
         }

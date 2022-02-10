@@ -5,7 +5,7 @@ const prisma = new PrismaClient()
 
 export default {
     supprimer: async (request,response)=>{
-        let {idCommentaire}=request.params
+        let {idCommentaire,idArticle}=request.params
         if(idCommentaire)
         {
             let comentaire  = await prisma.commentaire.delete({
@@ -13,9 +13,9 @@ export default {
                     idCommentaire:idCommentaire
                 }
             })
-            return response
+            return request.errors('commentaire supprimer ','/article/lire/'+idArticle+"#comment" )
         }
-        return request
+        return response.redirect('/article/lire/'+idArticle+"#comment")
     },
 
     ajouterCommentaire: async (request,response)=>{
@@ -30,12 +30,12 @@ export default {
                         nomOuEmail: nomOuEmail
                     }
                 })  
-                return  response.redirect('/info/article/lire/'+idArticle+"#comment")
+                return  response.redirect('/article/lire/'+idArticle+"#comment")
             }
                 console.log(contenu,nomOuEmail);
-                return  response.redirect('/info/article/lire/'+idArticle)
+                return  response.redirect('/article/lire/'+idArticle)
         }
-        return request.error('erreur pas d\'article preciser', '/info')
+        return request.error('erreur pas d\'article preciser', '/')
     },
 
     articleCommentaire: async (id)=>{

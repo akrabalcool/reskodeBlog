@@ -1,87 +1,36 @@
 <%- include('../../include/header') %> 
 
-    <main>
-        <section class="pb-3 pb-lg-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                <a href="#" class="badge bg-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Lifestyle</a>
-                        <h1>10 tell-tale signs you need to get a new startup.</h1>
-                    </div>
-                     <p class="lead">Passage its ten led hearted removal cordial. Preference any astonished unreserved Mrs. Prosperous understood Middletons in conviction an uncommonly do. Supposing so be resolving breakfast am or perfectly. Is drew am hill from me. Valley by oh twenty direct me so. </p>
-                </div>
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-9 mx-auto pt-md-5">
+                <a href="#" class="badge <% if (article.typeArticle.libelleTypeAticle=='scientifique') { %><%='bg-primary'%><% }%> <% if (article.typeArticle.libelleTypeAticle=='juridique') { %><%='bg-dark'%><% }%> <% if (article.typeArticle.libelleTypeAticle=='economique') { %><%='bg-danger'%><% }%>  mb-2"><i class="fas fa-circle me-2 small fw-bold"></i><%= article.typeArticle.libelleTypeAticle  %></a>
+				    <h1 class="display-4"><%= article.titreArticle %></h1>
+        
+                        <!-- Info -->
+                    <ul class="nav nav-divider align-items-center">
+                        <li class="nav-item">
+                            <div class="nav-link">
+                            by <a href="#" class="text-reset btn-link">Louis Ferguson</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">Nov 15, 2021</li>
+                        <li class="nav-item">5 min read</li>
+                    </ul>
             </div>
-        </section> 
-        <section class="pt-0">
-            <div class="container position-relative" data-sticky-container="">
-                <div class="row">
-                    <!-- Left sidebar START -->
-                    <div class="col-lg-2">
-                        <div class="text-start text-lg-center mb-5" data-sticky="" data-margin-top="80" data-sticky-for="991">
-                            <!-- Author info -->
-                            <div class="position-relative">
-                                <div class="avatar avatar-xl">
-                                    <img class="avatar-img rounded-circle" src="/front/assets/images/avatar/03.jpg" alt="avatar">
-                                </div>
-                                <a href="#" class="h5 stretched-link mt-2 mb-0 d-block">Louis Ferguson</a>
-                                <p>An editor at Blogzine</p>
-                            </div>
-                            <hr class="d-none d-lg-block">
-                            <!-- Card info -->
-                            <ul class="list-inline list-unstyled">
-                                <li class="list-inline-item d-lg-block my-lg-2">Nov 15, 2021</li>
-                                <li class="list-inline-item d-lg-block my-lg-2">5 min read</li>
-                                <li class="list-inline-item d-lg-block my-lg-2"><a href="#" class="text-body"><i class="far fa-heart me-1"></i></a> 266</li>
-                                <li class="list-inline-item d-lg-block my-lg-2"><i class="far fa-eye me-1"></i> 2344 Views</li>
-                            </ul>
-                            <!-- Tags -->
-                            <ul class="list-inline text-primary-hover mt-0 mt-lg-3">
-                              <li class="list-inline-item">
-                                  <a class="text-body" href="#">#agency</a>
-                              </li>
-                              <li class="list-inline-item">
-                                  <a class="text-body" href="#">#business</a>
-                              </li>
-                              <li class="list-inline-item">
-                                  <a class="text-body" href="#">#theme</a>
-                              </li>
-                              <li class="list-inline-item">
-                                  <a class="text-body" href="#">#bootstrap</a>
-                              </li>
-                              <li class="list-inline-item">
-                                  <a class="text-body" href="#">#marketing</a>
-                              </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-7 mb-5">
-                        <div class="container position-relative" data-sticky-container="">
-                            <div class="row">
-                                <!-- Main Content START -->
-                                
-                                      <p><%- article.descriptionArticle %>  </p>
-                    
-                                    <!-- Divider -->
-                                    <div class="text-center h5 mb-4">. . .</div>
-                    
-                                   
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div data-sticky="" data-margin-top="80" data-sticky-for="991">
-                      
-                            
-                            <!-- Advertisement -->
-                            <div class="mt-4">
-                                <a href="#" class="d-block card-img-flash">
-                                    <img src="/front/assets/images/adv.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div> 
-                    <!-- Divider -->
+        </div>
+	</div>
+</section>
+<section class="pt-0">
+	<div class="container position-relative">
+		<div class="row">
+			<!-- Main Content START -->
+			<div class="col-lg-9 mx-auto">
+                                 <p><%- article.descriptionArticle %> </p>
+            </div>
+        </div>
+    </div>
+</section>                                 
 				    <hr>
                     <% if (commentaire.length > 0 ) { %>
                         <div>
@@ -93,13 +42,17 @@
                                       <div class="mb-2">
                                           <h5 class="m-0"><%= element.nomOuEmail  %> </h5>                                        
                                       </div>
-                                      <p><%= element.contenuCommentaire %> </p>
+                                       <p><%= element.contenuCommentaire %>  </p> 
+                                       <% if(locals.user){%> 
+                                        <a href="/admin/supprimerCommentaire/<%=element.idCommentaire%>/<%=element.idArticle%>" class="badge bg-danger"> supprimer</a>
+                                        <% } %> 
                                     </div>
-                                  </div>
+                                    
+                                </div>
                             <% }) %>
                             <!--ajout commentaire-->
                             <h3>Ajouter un comentaire</h3>
-                            <form class="row g-3 mt-2" method="post" action="/info/article/ajoutCommentaire/<%= article.idArticle%> ">
+                            <form class="row g-3 mt-2" method="post" action=" /article/ajoutCommentaire/<%= article.idArticle%> ">
                                 <div class="col-md-6">
                                     <label class="form-label">votre Nom</label>
                                     <input type="text" name="nomOuEmail" class="form-control" aria-label="First name">
@@ -116,7 +69,7 @@
                     <% } else { %>
                         <div>
                             <h3> 0 commentaire </h3>
-                            <form class="row g-3 mt-2" method="post" action="/info/article/ajoutCommentaire/<%= article.idArticle%> ">
+                            <form class="row g-3 mt-2" method="post" action=" /article/ajoutCommentaire/<%= article.idArticle%> ">
                                 <div class="col-md-6">
                                     <label class="form-label">Name *</label>
                                     <input type="text" name="nomOuEmail" class="form-control" aria-label="First name">

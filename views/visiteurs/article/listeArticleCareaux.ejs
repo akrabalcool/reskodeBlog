@@ -49,7 +49,7 @@
 								</div>
 							</div>
 							<div class="card-body px-0 pt-3">
-								<h4 class="card-title"><a href="/info/article/lire/<%= element.idArticle %>" class="btn-link text-reset fw-bold"><%= element.titreArticle  %> </a></h4>
+								<h4 class="card-title"><a href="/article/lire/<%= element.idArticle %>" class="btn-link text-reset fw-bold"><%= element.titreArticle  %> </a></h4>
 								<p class="card-text">  <p><%- element.desc %>.... </p></p>
 								<!-- Card info -->
 								<ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
@@ -73,6 +73,34 @@
             <% } %>    
                 </div>
 			</div>   
+
+			<!-- Sidebar START -->
+			<div class="col-lg-3 mt-5 mt-lg-0">
+				<div data-sticky="" data-margin-top="80" data-sticky-for="767">
+					<!-- Categories -->
+					<div class="row g-2">
+						<h5> les Categories</h5>
+							<a href="/article/juridique">
+								<div class="d-flex justify-content-between align-items-center bg-dark-soft rounded p-2 position-relative">
+									<h6 class="m-0 text-dark">juridique</h6>
+								</div>	
+							</a>
+							<a href="/article/scientifique" >
+								<div class="d-flex justify-content-between align-items-center bg-primary-soft rounded p-2 position-relative">
+									<h6 class="m-0 text-primary">scientifique</h6>
+								</div>
+							</a>	
+							<a href="/article/economique" >
+								<div class="d-flex justify-content-between align-items-center bg-danger-soft rounded p-2 position-relative">
+									<h6 class="m-0 text-danger">economique</h6>
+								</div>
+							</a>	
+						
+					</div>
+					
+				</div>
+			</div>
+			<!-- Sidebar END -->
         </div> 
     </div>
 </section>
