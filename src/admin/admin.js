@@ -1,6 +1,7 @@
 import Article from "../models/article.js"
 import commentaire from "../models/commentaire.js"
 import pkg from "@prisma/client"
+import moment from "moment"
 const {PrismaClient} = pkg
 const prisma = new PrismaClient()
 
@@ -15,6 +16,7 @@ export default {
    
 
     index: (request, response) => {
+        response.locals.moment = moment
         response.render('include/header')
     },
 
@@ -26,6 +28,7 @@ export default {
         //je recupère tout les articles
         let typeArticle = await prisma.typeArticle.findMany()
         response.locals.TypeArticle = typeArticle
+        response.locals.moment = moment
         response.render('Admin/article/ajout')
     },
     modifierArticleGet: Article.modifierGet,
@@ -55,7 +58,7 @@ export default {
             
             
             response.locals.article = article
-             
+            response.locals.moment = moment
             response.locals.typeArticle = typeArticle
             return response.render('Admin/article/liste')
         }else{

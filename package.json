@@ -25,7 +25,8 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
     "express-session": "^1.17.2",
-    "prisma": "^3.5.0"
+    "prisma": "^3.5.0",
+    "moment":"^2.29.1"
   },
   "type": "module"
 }

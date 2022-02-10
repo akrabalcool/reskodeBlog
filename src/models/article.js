@@ -1,4 +1,5 @@
 import pkg from '@prisma/client'
+import moment from 'moment';
 const {PrismaClient} = pkg
 const prisma = new PrismaClient()
 import commentaire from './commentaire.js'
@@ -26,7 +27,7 @@ export default {
                     idUtilisateur: request.session.user.idUtilisateur
                 } 
             })
-                    response.redirect('admin')
+                    response.redirect('/admin')
         } else {
             request.errors('Veuillez reseigner tous les chmaps', '/')
         } 
@@ -47,6 +48,7 @@ export default {
             }
         })
         response.locals.article = article
+        response.locals.moment = moment
         if (request.session.user) {
            response.render('Admin/article/liste') 
         }else{
@@ -79,6 +81,7 @@ export default {
             article.forEach(element =>{ element.desc = element.descriptionArticle.slice(1,200) })
             response.locals.article = article
             response.locals.typeArticle = typeArticle
+            response.locals.moment = moment
             return response.render('visiteurs/article/listeArticleCareaux')
         }else{
             return response.errors('type d\' article non trouver','/')
@@ -99,6 +102,7 @@ export default {
             })
 
             response.locals.article = article
+            response.locals.moment = moment
             response.locals.commentaire = await commentaire.articleCommentaire(idArticle)
             return response.render('visiteurs/article/voirArticle')
         }else{
@@ -115,6 +119,7 @@ export default {
                     idArticle:idArticle
                 }
             })
+            response.locals.moment = moment
             return request.errors('l\'article '+article.titreArticle+'a ete supprimer','/admin')
         }
     },
@@ -133,6 +138,7 @@ export default {
             response.locals.article = article
             let typeArticle = await prisma.typeArticle.findMany()
             response.locals.TypeArticle = typeArticle
+            response.locals.moment = moment
             return response.render('Admin/article/modifier')
         }else{
             return request.errors('l\'article n\'exit plus ','/')
@@ -155,6 +161,7 @@ export default {
                     idTypeArticle: typeArticle
                 }
             })
+            response.locals.moment = moment
             return request.errors("l'article "+ article.titreArticle+" "+"a ete modifier",'/admin')
         }
         
