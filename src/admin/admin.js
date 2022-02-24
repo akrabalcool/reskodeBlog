@@ -17,7 +17,7 @@ export default {
 
     index: (request, response) => {
         response.locals.moment = moment
-        response.render('include/header')
+        response.render('Admin/article/index')
     },
 
     ajouterArticle:Article.ajouter,
