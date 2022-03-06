@@ -1,127 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Blogzine - Blog and Magazine Bootstrap 5 Theme</title>
+	<!-- Meta Tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Webestica.com">
+	<meta name="description" content="Bootstrap based News, Magazine and Blog Theme">
 
-<%- include('../include/header') %> 
-<!-- on doit suprimer tout ce qui vient avant  -->
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="back/images/fin.jpg">
 
-<!-- photo -->
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="/front/css2.css?family=Nunito+Sans:wght@400;700&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
 
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="/front/assets/vendor/font-awesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="/front/assets/vendor/bootstrap-icons/bootstrap-icons.css">
+	<link rel="stylesheet" type="text/css" href="/front/assets/vendor/tiny-slider/tiny-slider.css">
+    <script src="https://cdn.tiny.cloud/1/vgwzf15khmel8f39jk8cvgwywed9sd08t1yodtswkdclcgwj/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+	<link href="back/css/bootstrap.min.css" rel="stylesheet">
 
-<section class="p-0">
-	<div class="container">
-		<div class="row">
-			<div class="col">
-				<a href="#" class="d-block card-img-flash">
-					<img src="/front/assets/images/adv-3.png" alt="">
-				</a>
-				<small class="text-end d-block mt-1">Advertisement</small>
-			</div>
-		</div>
-	</div>
-</section>
-<!--  on garde on garde  -->
+    <!-- Animate CSS -->
+    <link href="back/vendors/animate/animate.css" rel="stylesheet">
+    <!-- Icon CSS-->
+	<link rel="stylesheet" href="back/vendors/font-awesome/css/font-awesome.min.css">
+    <!-- Camera Slider -->
+    <link rel="stylesheet" href="back/vendors/camera-slider/camera.css">
+    <!-- Owlcarousel CSS-->
+	<link rel="stylesheet" type="text/css" href="back/vendors/owl_carousel/owl.carousel.css" media="all">
 
+	<!-- Theme CSS-->
+	<link id="style-switch" rel="stylesheet" type="text/css" href="back/assets/css/style.css"> 
+    <link rel="stylesheet" type="text/css" href="back/css/style.css" media="all" />
+	<link id="style-switch" rel="stylesheet" type="text/css" href="/front/assets/css/style.css">
+</head>
+<body>
 
+	<header class="navbar-light navbar-sticky header-static">
+        <!-- Logo Nav START -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <!-- Logo START -->
+                <a class="navbar-brand" href="/">
+                    <img class="navbar-brand-item light-mode-item" src="back/images/fin.jpg" alt="logo"  width="120px">			
+                </a>
+                <!-- Logo END -->
+    
+                <!-- Responsive navbar toggler -->
+                <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="text-body h6 d-none d-sm-inline-block">Menu</span>
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <!-- Main navbar START -->
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <!-- Nav Search START -->
+                    <div class="nav mt-3 mt-lg-0 px-4 flex-nowrap align-items-center">
+                        <div class="nav-item w-100">
+                            <form class="rounded position-relative" method="post" action="  /chercher">
+                                <input class="form-control pe-5 bg-light" name="chercher" type="search" style="font-size: 16px;" placeholder="chercher un article"  aria-label="Search">
+                                <button class="btn bg-transparent px-2 py-0 position-absolute top-50 end-0 translate-middle-y" type="submit"><i class="bi bi-search fs-5"> </i></button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Nav Search END -->
+                    <ul class="navbar-nav navbar-nav-scroll ms-auto">
+                        
+                        <!-- Nav item 1 Demos -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link  active" href="/" style="font-size: 16px;" id="homeMenu"  >ACCUEIL</a>
+                            
+                        </li>
+    
+                        <!-- Nav item 2 Pages -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="homeMenu" data-bs-toggle="dropdown" aria-haspopup="true" style="font-size: 16px;" aria-expanded="false">Pages</a>
+							<ul class="dropdown-menu" aria-labelledby="homeMenu">
+                                <% if(locals.user){%>
+                                        <li> <a class="dropdown-item" style="font-size: 14px;" href="/admin/article/liste/juridique">jurudique</a></li>
+                                        <li> <a class="dropdown-item" style="font-size: 14px;" href="/admin/article/liste/scientifique">scientifique</a></li>
+                                        <li> <a class="dropdown-item" style="font-size: 14px;" href="/admin/article/liste/economique"> economique </a></li>
+                                    <%}else{ %> 
+                                        <li> <a class="dropdown-item" style="font-size: 14px;" href="/article/juridique">jurudique</a></li>
+                                        <li> <a class="dropdown-item" style="font-size: 14px;" href="/article/scientifique">scientifique</a></li>
+                                        <li> <a class="dropdown-item" style="font-size: 14px;" href="/article/economique"> economique </a></li>
+                                    <% }%>     
+                               
+							</ul>	
+                        </li>
+    
+                        <!-- Nav item 3 Post -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="postMenu" style="font-size: 16px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Authentification</a>
+                            <ul class="dropdown-menu" aria-labelledby="postMenu">
+                                <% if(locals.user){%>
+                                <li> <a class="dropdown-item" style="font-size: 16px;" href="/admin">admin</a></li>
+                                <li> <a class="dropdown-item" style="font-size: 16px;" href="/admin/article/create">Ajouter</a></li>
+                                <li> <a class="dropdown-item" style="font-size: 16px;" href="/admin/deconnect">se deconnecter </a></li>  
+                                <%}else{ %> 
+                                <li> <a class="dropdown-item" style="font-size: 16px;" href="/login">login</a></li>
+                                <% }%>     
+							</ul>	
+                        </li>
+    
+                    </ul>
+                </div>
+                
+            </div>
+        </nav>
+        <!-- Logo Nav END -->
+    </header>
 
-
-
-
-
-<!-- a propos de nous -->
-<section class="pt-4 pb-0">
-	<div class="container">
-		<div class="row">
-      		<div class="col-xl-9 mx-auto">
-				<h2>Our story</h2>
-				<p class="lead">
-				Founded in 2006, passage its ten led hearted removal cordial. Preference any astonished unreserved Mrs. Prosperous understood Middletons in conviction an uncommonly do. Supposing so be resolving breakfast am or perfectly. Is drew am hill from me. Valley by oh twenty direct me so.
-				</p>
-				<p>Water timed folly right aware if oh truth. Imprudence attachment him his for sympathize. Large above be to means. Dashwood does provide stronger is. Warrant private blushes removed an in equally totally if. Delivered dejection necessary objection do Mr prevailed. Mr feeling does chiefly cordial in do. ...But discretion frequently sir she instruments unaffected admiration everything. Meant balls it if up doubt small purse. Required his you put the outlived answered position. A pleasure exertion if believed provided to. All led out world this music while asked. Paid mind even sons does he door no. Attended overcame repeated it is perceived Marianne in. I think on style child of. Servants moreover in sensible it ye possible. Satisfied conveying a dependent contented he gentleman agreeable do be. Water timed folly right aware if oh truth. Imprudence attachment him his for sympathize. Large above be to means. Dashwood does provide stronger is. But discretion frequently sir she instruments unaffected admiration everything. Meant balls it if up doubt small purse. Required his you put the outlived answered position.  I think on style child of. Servants moreover in sensible it ye possible. Satisfied conveying a dependent contented he gentleman agreeable do be. Warrant private blushes removed an in equally totally if. Delivered dejection necessary objection do Mr prevailed.   Required his you put the outlived answered position. A pleasure exertion if believed provided to. All led out world this music while asked. Paid mind even sons does he door no. Attended overcame repeated it is perceived Marianne in. I think on style child of. Servants moreover in sensible it ye possible.</p>
-			</div>	
-		</div>
-	</div>
-</section>			
-
-<!-- nos partenaires -->
-<section class="p-0">
-	<div class="container">
-		<div class="row">
-			<div class="col">
-				<div class="row g-4">
-
-					<h3 class="mb-3 mt-5">Nos partenaire</h3>
-					<!-- Team item-->
-					<div class="col-sm-6 col-lg-3">
-					  <div class="text-center">
-						  <!-- Avatar img -->
-						<div class="avatar avatar-xxl mb-2">
-						  <img class="avatar-img rounded-circle" src="/front/assets/images/avatar/04.jpg" alt="avatar">
+	<section class="pt-3 pb-3 mb-2 card-grid">
+		<div class="container">
+		  <div class="row">
+			<div class="col-12">
+			  <div class="tiny-slider arrow-hover arrow-blur arrow-white arrow-round rounded-3 overflow-hidden">
+				<div class="tiny-slider-inner" data-autoplay="true" data-hoverpause="true" data-gutter="1" data-arrow="true" data-dots="false" data-items="1">
+				  <!-- Slide 1 -->
+				  <div class="card bg-dark-overlay-3 h-400 h-sm-500 h-md-600 rounded-0" style="background-image:url(back/images/droité.jpg); background-position: center left; background-size: cover;">
+					<!-- Card Image overlay -->
+					<div class="card-img-overlay d-flex align-items-center p-3 p-sm-5"> 
+					  <div class="w-100 my-auto">
+						<div class="col-md-10 col-lg-7 mx-auto text-center">
+						  <!-- Card category -->
+						  <a href="#" class="badge bg-primary mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>JUSTICE</a>
+						  <!-- Card title -->
+						  <h2  style="color: darkgreen;font-size: 45px;">Nous vous informons des actualités juridiques</h2>
+						  
+						  <!-- Card info -->
 						</div>
-						<h5>Louis Ferguson</h5>
-						<p class="m-0">Editor in Chief</p>
-						<ul class="nav justify-content-center">
-						  <li class="nav-item">
-							<a class="nav-link px-2 fs-5" href="#"><i class="fab fa-facebook-square"></i></a>
-						  </li>
-						  <li class="nav-item">
-							<a class="nav-link px-2 fs-5" href="#"><i class="fab fa-twitter-square"></i></a>
-						  </li>
-						  <li class="nav-item">
-							<a class="nav-link px-2 fs-5" href="#"><i class="far fa-envelope"></i></a>
-						  </li>
-						</ul>
 					  </div>
 					</div>
-					
+				  </div>
+				  <!-- Slide 2 -->
+				  <div class="card bg-dark-overlay-3 h-400 h-sm-500 h-md-600 rounded-0" style="background-image:url(back/images/eco4.jpg); background-position: center left; background-size: cover;">
+					<!-- Card Image overlay -->
+					<div class="card-img-overlay d-flex align-items-center p-3 p-sm-5"> 
+					  <div class="w-100 my-auto">
+						<div class="col-md-10 col-lg-7 mx-auto text-center">
+						  <!-- Card category -->
+						  <a href="#" class="badge bg-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>ECONIMIE</a>
+						  <!-- Card title -->
+						  <h2 class="text-white display-5"  style="font-size: 45px;">Tout sur l'actualité économique</h2>
+						  
+						  <!-- Card info -->
+						</div>
+					  </div>
+					</div>
+				  </div>
+				  <!-- Slide 3 -->
+				  <div class="card bg-dark-overlay-3 h-400 h-sm-500 h-md-600 rounded-0" style="background-image:url(back/images/droit7.jpg); background-position: center left; background-size: cover;">
+					<!-- Card Image overlay -->
+					<div class="card-img-overlay d-flex align-items-center p-3 p-sm-5"> 
+					  <div class="w-100 my-auto">
+						<div class="col-md-10 col-lg-7 mx-auto text-center">
+						  <!-- Card category -->
+						  <a href="#" class="badge bg-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>JUSTICE</a>
+						  <!-- Card title -->
+						  <h2 class="text-white display-5"  style="font-size: 45px;">La justice au sein de notre société</h2>
+						  
+						  <!-- Card info -->
+						</div>
+					  </div>
+					</div>
+				  </div>
 				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </section>
+	  
+	  <section class="pt-4">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<!-- Title -->
+					<div class="mb-4">
+						<h2 class="m-3" style="color:green;"><i class="bi bi-megaphone"></i> Les principaux actualités saillantes d’aujourd’hui</h2>
+						<p class="m-3" style="color:blueviolet; font-size: 13px;">Dernières nouvelles, photos et rapports spéciaux</p>
+					</div>
+					<div class="tiny-slider arrow-hover arrow-blur arrow-dark arrow-round mt-3">
+						<div class="tiny-slider-inner" data-autoplay="true" data-hoverpause="true" data-gutter="24" data-arrow="true" data-dots="false" data-items-xl="4" data-items-lg="3" data-items-md="3" data-items-sm="2" data-items-xs="1">
+	
+							<% if (locals.article) { %>
+								<% article.forEach(element => { %>
+									<!-- Card item START -->
+							
+									<div class="card">
+										<!-- Card img -->
+										<div class="position-relative">
+											<img class="card-img" src="data:image/png;base64,<%= element.imageArticle %>" width="120px" height="130px" alt="Card image">
+											<div class="card-img-overlay d-flex align-items-start flex-column p-3">
+												<!-- Card overlay bottom -->
+												<div class="w-100 mt-auto">
+													<a href="#" class="badge <% if (element.typeArticle.libelleTypeAticle=='scientifique') { %><%='bg-primary'%><% }%> <% if (element.typeArticle.libelleTypeAticle=='juridique') { %><%='bg-dark'%><% }%> <% if (element.typeArticle.libelleTypeAticle=='economique') { %><%='bg-danger'%><% }%> mb-2"> <i class="fas fa-circle me-2 small fw-bold"></i><%= element.typeArticle.libelleTypeAticle %></a>
+												</div>
+											</div>
+										</div>
+										<div class="card-body px-0 pt-3">
+											<h5 class="card-title"><a href="/article/lire/<%= element.idArticle %>" class="btn-link text-reset fw-bold"><%= element.titreArticle  %></a></h5>
+											<!-- Card info -->
+											<ul class="nav nav-divider align-items-center">
+												<li class="nav-item">
+													<div class="nav-link">
+														<div class="d-flex align-items-center position-relative">
+															<div class="avatar avatar-xs">
+																<img class="avatar-img rounded-circle" src="back/images/08-1.jpg" alt="avatar">
+															</div>
+															<span class="ms-3">by <a href="post-single-6.html" class="stretched-link text-reset btn-link">Joan</a></span>
+														</div>
+													</div>
+												</li>
+												<li class="nav-item"><%= moment(element.datePublication).format('DD/MMMM/YYYY')  %></li>
+											</ul>
+										</div>
+									</div>
+									<!-- Card item END -->
+								<% }) %>
+							<% } %>
+							
+							
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	
+<!-- About Us Area -->
+<section class="about_us_area row" style="padding-top:30px padding-left: 180px; padding-right: 180px; margin-left: 180px;">
+	<div class="container">
+		<div class="tittle wow fadeInUp">
+			<h2 style="color:green;">A PROPOS DE NOUS</h2>
+		</div></br></br>
+		<div class="subtittle">
+			<h2 style="color:blue;">QUI SOMMES NOUS ???</h2>
+		</div>
+		<div class="row about_row" style="padding-top: 5px;">
+			<div class="clearfix">
+				<img src="back/images/droit4.jpg" class="col-md-6 float-md-end mb-3 ms-md-3" style="height: 550px;">
+
+				<p>
+					A paragraph of placeholder text. We're using it here to show the use of the clearfix class. We're adding quite a few meaningless phrases here to demonstrate how the columns interact here with the floated image.
+				</p>
+
+				<p>
+					As you can see the paragraphs gracefully wrap around the floated image. Now imagine how this would look with some actual content in here, rather than just this boring placeholder text that goes on and on, but actually conveys no tangible information at. It simply takes up space and should not really be read.
+				</p>
+
+				<p>
+					And yet, here you are, still persevering in reading this placeholder text, hoping for some more insights, or some hidden easter egg of content. A joke, perhaps. Unfortunately, there's none of that here.
+				</p>
 			</div>
 		</div>
 	</div>
 </section>
+<!-- End About Us Area -->
 
-
-
-
-<!-- -->
-
-<!-- on doit supprimmer tout apres -->
-
-<!-- footer-->
-<footer>
+<!-- OUR PURPOSES -->
+<section class="about_us_area row" style="padding-top:30px padding-left: 180px; padding-right: 180px; margin-left: 180px;">
 	<div class="container">
-		<!-- About and Newsletter START -->
-		<div class="row bg-dark py-5 mx-0 card-header align-items-center text-center text-md-start">
-			<!-- Copyright -->
-			<div class="col-md-5 mb-3 mb-md-0">
-				<div class="text-primary-hover text-muted">©2021 <a href="index-2.htm" class="text-reset btn-link" target="_blank">Webestica</a>. All rights reserved
+		<div class="row purpose">
+			<div class="col-md-6 col-sm-6 about_client">
+				<img src="back/images/droit1.jpg" alt="" width="600px">
+			</div>
+			<div class="who_we_area col-md-6 col-sm-6">
+				<div class="subtittle">
+					<h2 style="color:blue;">QUELS SONT NOS OBJECTIFS ???</h2>
 				</div>
-			</div>
-			<!-- Logo -->
-			<div class="col-md-3 mb-3 mb-md-0">
-				<img src="/front/assets/images/logo-light.svg" alt="footer logo">
-			</div>
-			<!-- Social links -->
-			<div class="col-md-4">
-				<ul class="nav text-primary-hover justify-content-center justify-content-md-end">
-					<li class="nav-item">
-						<a class="nav-link px-2 fs-5" href="#"><i class="fab fa-facebook-square"></i></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link px-2 fs-5" href="#"><i class="fab fa-twitter-square"></i></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link px-2 fs-5" href="#"><i class="fab fa-linkedin"></i></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link px-2 fs-5" href="#"><i class="fab fa-youtube-square"></i></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link ps-2 pe-0 fs-5" href="#"><i class="fab fa-vimeo"></i></a>
-					</li>
-				</ul>
+				<p class=" wow fadeInUp animated" data-wow-delay="0.8s"><i class="fa fa-balance-scale" style="font-size:30px;color:blue;"></i> Découvrez tout sur l'actualité juridique</p>
+				<p class=" wow fadeInUp animated" data-wow-delay="1s"><i class="fa fa-balance-scale" style="font-size:30px;color:blue;"></i> Découvrez tout sur l'actualité juridique</p>
+				<p class=" wow fadeInUp animated" data-wow-delay="1.2s"><i class="fa fa-balance-scale" style="font-size:30px;color:blue;"></i> Découvrez tout sur l'actualité juridique</p>
+				<p class=" wow fadeInUp animated" data-wow-delay="1.4s"><i class="fa fa-balance-scale" style="font-size:30px;color:blue;"></i> Découvrez tout sur l'actualité juridique</p>
+				<p class=" wow fadeInUp animated" data-wow-delay="1.6s"><i class="fa fa-balance-scale" style="font-size:30px;color:blue;"></i> Découvrez tout sur l'actualité juridique</p>
+				<p class=" wow fadeInUp animated" data-wow-delay="1.8s"><i class="fa fa-balance-scale" style="font-size:30px;color:blue;"></i> Découvrez tout sur l'actualité juridique</p>
+				<p class=" wow fadeInUp animated" data-wow-delay="2s"><i class="fa fa-balance-scale" style="font-size:30px;color:blue;"></i> Découvrez tout sur l'actualité juridique</p>
+
 			</div>
 		</div>
-		<!-- About and Newsletter END -->
 	</div>
-</footer>
-<!-- =======================
-Footer END -->
+</section>
+<!-- End OF OUR PURPOSES -->
+
+
 <%- include('../include/footer') %> 

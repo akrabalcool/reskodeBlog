@@ -1,6 +1,7 @@
 // NodeJs imported
 import express from "express"
 import pkg from "@prisma/client"
+import moment from 'moment';
 const {PrismaClient} = pkg
 const prisma = new PrismaClient()
 // imported from files
@@ -36,7 +37,7 @@ export default (() => {
             }
             response.locals.article =  arti
         }
-         
+        response.locals.moment = moment 
         return  response.render('visiteurs/index.ejs')
     }) 
     // L'ajout du middleware homeOff permet de desactiver le fonctionnment de la page

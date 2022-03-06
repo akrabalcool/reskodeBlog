@@ -21,75 +21,72 @@
         </div>
 	</div>
 </section>
+
 <section class="pt-0">
-	<div class="container position-relative">
-		<div class="row">
-			<!-- Main Content START -->
-			<div class="col-lg-9 mx-auto">
-                                 <p><%- article.descriptionArticle %> </p>
-            </div>
-        </div>
-    </div>
-</section>                                 
-				    <hr>
-                    <% if (commentaire.length > 0 ) { %>
-                        <div>
-                            <h3> <%= commentaire.length %>  comments</h3>
-                            <!-- Comment level 1-->
-                            <% commentaire.forEach(element => { %>
-                                <div class="my-4 d-flex">
-                                    <div>
-                                      <div class="mb-2">
-                                          <h5 class="m-0"><%= element.nomOuEmail  %> </h5>                                        
-                                      </div>
-                                       <p><%= element.contenuCommentaire %>  </p> 
-                                       <% if(locals.user){%> 
-                                        <a href="/admin/supprimerCommentaire/<%=element.idCommentaire%>/<%=element.idArticle%>" class="badge bg-danger"> supprimer</a>
-                                        <% } %> 
-                                    </div>
-                                    
+                    <div class="container position-relative">
+                        <div class="row">
+                            <!-- Main Content START -->
+                            <div class="col-lg-9 mx-auto">
+                                        <p><%- article.descriptionArticle %> </p>
+                            </div>
+                            <hr>
+                            <% if (commentaire.length > 0 ) { %>
+                                <div>
+                                    <h3> <%= commentaire.length %>  comments</h3>
+                                    <!-- Comment level 1-->
+                                    <% commentaire.forEach(element => { %>
+                                        <div class="my-4 d-flex">
+                                            <div>
+                                            <div class="mb-2">
+                                                <h5 class="m-0"><%= element.nomOuEmail  %> </h5>                                        
+                                            </div>
+                                            <p><%= element.contenuCommentaire %>  </p> 
+                                            <% if(locals.user){%> 
+                                                <a href="/admin/supprimerCommentaire/<%=element.idCommentaire%>/<%=element.idArticle%>" class="badge bg-danger"> supprimer</a>
+                                                <% } %> 
+                                            </div>
+                                            
+                                        </div>
+                                    <% }) %>
+                                    <!--ajout commentaire-->
+                                    <h3>Ajouter un comentaire</h3>
+                                    <form class="row g-3 mt-2" method="post" action=" /article/ajoutCommentaire/<%= article.idArticle%> ">
+                                        <div class="col-md-6">
+                                            <label class="form-label">votre Nom</label>
+                                            <input type="text" name="nomOuEmail" class="form-control" aria-label="First name">
+                                        </div>
+                                        <div class="col-12">
+                                            <label id="comment" class="form-label">votre commentaire</label>
+                                            <textarea name="contenu" class="form-control" rows="3"></textarea>
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-primary"> votre commentaire</button>
+                                        </div>
+                                    </form>
                                 </div>
-                            <% }) %>
-                            <!--ajout commentaire-->
-                            <h3>Ajouter un comentaire</h3>
-                            <form class="row g-3 mt-2" method="post" action=" /article/ajoutCommentaire/<%= article.idArticle%> ">
-                                <div class="col-md-6">
-                                    <label class="form-label">votre Nom</label>
-                                    <input type="text" name="nomOuEmail" class="form-control" aria-label="First name">
+                            <% } else { %>
+                                <div>
+                                    <h3> 0 commentaire </h3>
+                                    <form class="row g-3 mt-2" method="post" action=" /article/ajoutCommentaire/<%= article.idArticle%> ">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Name *</label>
+                                            <input type="text" name="nomOuEmail" class="form-control" aria-label="First name">
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Your Comment *</label>
+                                            <textarea name="contenu" class="form-control" rows="3"> </textarea>
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-primary">Post comment</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="col-12">
-                                    <label id="comment" class="form-label">votre commentaire</label>
-                                      <textarea name="contenu" class="form-control" rows="3"></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary"> votre commentaire</button>
-                                </div>
-                            </form>
+                            <% } %> 
                         </div>
-                    <% } else { %>
-                        <div>
-                            <h3> 0 commentaire </h3>
-                            <form class="row g-3 mt-2" method="post" action=" /article/ajoutCommentaire/<%= article.idArticle%> ">
-                                <div class="col-md-6">
-                                    <label class="form-label">Name *</label>
-                                    <input type="text" name="nomOuEmail" class="form-control" aria-label="First name">
-                                </div>
-                                <div class="col-12">
-                                    <label class="form-label">Your Comment *</label>
-                                      <textarea name="contenu" class="form-control" rows="3"> </textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary">Post comment</button>
-                                </div>
-                            </form>
-                        </div>
-                    <% } %>   
-                     
-                </div>
-            </div>
-        </section>
+                    </div>
+</section>
                              
-    </main>   
+</main>   
     
 
 <%- include('../../include/footer') %> 
